@@ -1,0 +1,182 @@
+{% extends 'home.html'%}
+
+{% block content %}
+
+<div class="h-screen">
+
+    <h1 class="font-black text-2xl">Lended Books</h1>
+
+    <div class="flex flex-col gap-2 mt-5">
+
+        <div class="flex items-center justify-between">
+
+            <select
+                id="menu"
+                name="menu"
+                class="w-[180px] border border-gray-300 rounded-lg px-3 py-2
+                       bg-white outline-none focus:border-cyan-600 cursor-pointer">
+
+                <option value="" selected disabled>Export</option>
+                <option value="pdf">PDF</option>
+                <option value="excel">Excel</option>
+                <option value="csv">CSV</option>
+                <option value="json">JSON</option>
+
+            </select>
+
+
+            <div class="flex items-center gap-3">
+
+                <input
+                    type="search"
+                    placeholder="Search..."
+                    class="border border-gray-300 rounded-lg px-4 py-1
+                           outline-none focus:border-[#006d8b]">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TABLE -->
+    <div class="w-full overflow-x-auto mt-1.5">
+
+        <table class="w-full border-collapse border border-gray-300">
+
+            <thead class="bg-gray-100">
+
+                <tr>
+
+                    <th class="border border-gray-300 px-4 py-3">
+                        Book ID
+                    </th>
+
+                    <th class="border border-gray-300 px-4 py-3">
+                        Book Name
+                    </th>
+
+                    <th class="border border-gray-300 px-4 py-3">
+                        Receiver Name
+                    </th>
+
+                    <th class="border border-gray-300 px-4 py-3">
+                        Receiver Last Name
+                    </th>
+
+                    <th class="border border-gray-300 px-4 py-3">
+                        Lending Date
+                    </th>
+
+                    <th class="border border-gray-300 px-4 py-3">
+                        Return Date
+                    </th>
+
+                    <th class="border border-gray-300 px-4 py-3">
+                        Quantity
+                    </th>
+
+                    <!-- NEW -->
+                    <th class="border border-gray-300 px-4 py-3">
+                        Action
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for i in all %}
+
+                <tr class="hover:bg-gray-50">
+
+                    <!-- BOOK ID -->
+                    <td class="border border-gray-300 px-4 py-3">
+                        {{ i.Book_ID }}
+                    </td>
+
+
+                    <!-- BOOK NAME -->
+                    <td class="border border-gray-300 px-4 py-3">
+                        {{ i.Book_Name }}
+                    </td>
+
+
+                    <!-- RECEIVER NAME -->
+                    <td class="border border-gray-300 px-4 py-3">
+                        {{ i.Receiver_Name }}
+                    </td>
+
+
+                    <!-- LAST NAME -->
+                    <td class="border border-gray-300 px-4 py-3">
+                        {{ i.Receiver_Last_Name }}
+                    </td>
+
+
+                    <!-- LENDING DATE -->
+                    <td class="border border-gray-300 px-4 py-3">
+                        {{ i.Lending_Date }}
+                    </td>
+
+
+                    <!-- RETURN DATE -->
+                    <td class="border border-gray-300 px-4 py-3">
+                        {{ i.Return_Date }}
+                    </td>
+
+
+                    <!-- QUANTITY -->
+                    <td class="border border-gray-300 px-4 py-3 text-center">
+                        {{ i.Quantity }}
+                    </td>
+
+
+                    <!-- RETURN BUTTON -->
+                    <td class="border border-gray-300 px-4 py-3 text-center">
+
+<form
+    method="POST"
+    action="{% url 'return_remove_add' i.Book_ID %}"
+>
+    {% csrf_token %}
+
+    <button type="submit">
+        <i class="bi bi-arrow-return-left"></i>
+    </button>
+</form>
+
+                    </td>
+
+                </tr>
+
+
+                {% empty %}
+
+                <tr>
+
+                    <td
+                        colspan="8"
+                        class="border border-gray-300 px-4 py-10
+                               text-center text-gray-500">
+
+                        No lended books available
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

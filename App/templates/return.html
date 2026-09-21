@@ -1,0 +1,80 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+<div class="w-full min-h-screen">
+
+    <!-- Title -->
+    <div class="mb-5">
+        <h1 class="font-black text-2xl">
+            Search Book
+        </h1>
+
+        <p class="text-gray-500 text-sm mt-1">
+            Enter the book information to searc a book.
+        </p>
+    </div>
+
+    <!-- Small Form -->
+    <div class="w-full max-w-xl bg-white rounded-lg shadow-sm p-5">
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="flex flex-col gap-4">
+
+                <!-- Book ID -->
+                <div class="flex flex-col gap-1">
+                    <label class="text-sm font-semibold text-gray-700">
+                        Book ID
+                    </label>
+
+                    {{ form.bookId }}
+
+                    {% if form.bookId.errors %}
+                    <p class="text-red-500 text-sm">
+                        {{ form.bookId.errors.0 }}
+                    </p>
+                    {% endif %}
+                </div>
+
+                <!-- Book Name -->
+                <div class="flex flex-col gap-1">
+                    <label class="text-sm font-semibold text-gray-700">
+                        Book Name
+                    </label>
+
+                    {{ form.bookName }}
+
+                    {% if form.bookName.errors %}
+                    <p class="text-red-500 text-sm">
+                        {{ form.bookName.errors.0 }}
+                    </p>
+                    {% endif %}
+                </div>
+
+                <!-- Button -->
+                <div class="mt-2">
+
+                    <button
+                        type="submit"
+                        class="bg-[#006d8b] text-white px-6 py-2 rounded-lg
+                               text-sm font-semibold cursor-pointer
+                               hover:bg-[#005a73] transition">
+
+                        <i class="bi bi-arrow-return-left mr-2"></i>
+                        Search
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

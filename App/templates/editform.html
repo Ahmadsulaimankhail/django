@@ -1,0 +1,124 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+<div class="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-xl shadow">
+
+    <h2 class="text-2xl font-bold mb-6 text-[#006d8b]">
+        Edit Book
+    </h2>
+
+    <form method="POST"
+          enctype="multipart/form-data"
+          class="w-full grid grid-cols-2 gap-4">
+
+        {% csrf_token %}
+
+        <!-- Book ID -->
+        <input type="number"
+               name="bookId"
+               value="{{ user.Book_ID }}"
+               placeholder="Book ID"
+               class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#006d8b]">
+
+        <!-- Book Name -->
+        <input type="text"
+               name="bookName"
+               value="{{ user.Book_Name }}"
+               placeholder="Book Name"
+               class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#006d8b]">
+
+        <!-- Author -->
+        <input type="text"
+               name="author"
+               value="{{ user.Author }}"
+               placeholder="Author"
+               class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#006d8b]">
+
+        <!-- Release Date -->
+        <input type="date"
+               name="releaseDate"
+               value="{{ user.Release_Date }}"
+               class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#006d8b]">
+
+        <!-- Publisher -->
+        <input type="text"
+               name="publisher"
+               value="{{ user.Publisher }}"
+               placeholder="Publisher"
+               class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#006d8b]">
+
+        <!-- City -->
+        <input type="text"
+               name="city"
+               value="{{ user.City }}"
+               placeholder="City"
+               class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#006d8b]">
+
+        <!-- Quantity -->
+        <input type="number"
+               name="quantity"
+               value="{{ user.Quantity }}"
+               placeholder="Quantity"
+               class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#006d8b]">
+
+        <!-- Category -->
+        <input type="text"
+               name="category"
+               value="{{ user.Category }}"
+               placeholder="Category"
+               class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#006d8b]">
+
+        <!-- Email -->
+        <input type="email"
+               name="email"
+               value="{{ user.Email }}"
+               placeholder="Email"
+               class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#006d8b]">
+
+        <!-- Phone -->
+        <input type="text"
+               name="phoneNumber"
+               value="{{ user.Phone_Number }}"
+               placeholder="Phone Number"
+               class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#006d8b]">
+
+        <!-- Image -->
+        <label
+            class="col-span-2 w-full h-40 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-[#006d8b] transition">
+
+            <i class="bi bi-cloud-arrow-up-fill text-4xl text-[#006d8b]"></i>
+
+            <p class="mt-2 text-gray-500">
+                Change Book Image
+            </p>
+
+            <input type="file"
+                   name="image"
+                   class="hidden">
+
+        </label>
+
+        <!-- Description -->
+        <textarea
+            name="description"
+            placeholder="Description"
+            class="col-span-2 w-full border border-gray-300 rounded-lg px-4 py-3 h-32 focus:outline-none focus:border-[#006d8b]">{{ user.Description }}</textarea>
+
+        <!-- Button -->
+        <div class="col-span-2 flex justify-center mt-6">
+
+            <button type="submit"
+                class="bg-[#006d8b] text-white px-10 py-3 rounded-lg font-semibold text-lg cursor-pointer hover:bg-[#005a73] transition duration-300">
+
+                Update Book
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

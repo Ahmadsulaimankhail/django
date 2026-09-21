@@ -1,0 +1,16 @@
+[
+    {
+        "Book_ID": 1001,
+        "Book_Name": "You vs You",
+        "Author": "Tamim",
+        "Release_Date": "2026-08-14",
+        "Publisher": "Tom",
+        "City": "Ahlen",
+        "Quantity": 60,
+        "Description": "jnjsad",
+        "Image": "Screenshot 2026-08-23 at 13.54.23.png",
+        "Category": "science",
+        "Email": "a.sulaimankhail@outlook.com",
+        "Phone_Number": 15510352811
+    }
+]

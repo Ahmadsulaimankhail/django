@@ -1,0 +1,35 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+<div class="flex items-center gap-6 lg:gap-10 overflow-x-auto whitespace-nowrap pb-3">
+    <h2
+        class="shrink-0 font-black text-lg sm:text-xl lg:text-2xl text-cyan-600 border-b-2 border-cyan-500">
+        Add Member
+    </h2>
+</div>
+
+<div class="mt-6 sm:mt-8 w-full">
+
+    <form method="POST" class="w-full grid grid-cols-2 gap-2">
+
+        {% csrf_token %}
+
+        {{ form.memberId }}
+        {{ form.memberName }}
+
+        {{ form.email }}
+        {{ form.phoneNumber }}
+
+        <div class="col-span-2 flex justify-center mt-6">
+            <button type="submit"
+                class="bg-[#006d8b] text-white px-10 py-3 rounded-lg font-semibold text-lg cursor-pointer hover:bg-[#005a73] transition duration-300">
+                Add Member
+            </button>
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}
