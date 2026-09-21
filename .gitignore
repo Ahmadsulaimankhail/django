@@ -1,4 +1,5 @@
-myev/
+node_modules/
+.DS_Storemyev/
 venv/
 .env
 __pycache__/
