@@ -24,9 +24,8 @@ ALLOWED_HOSTS = [
     ".vercel.app",
     "localhost",
     "127.0.0.1",
-    "django-liard-gamma.vercel.app",
+    "django-5fgbppi1d-ahmadsulaimankhails-projects.vercel.app"
 ]
-
 
 
 # Application definition
